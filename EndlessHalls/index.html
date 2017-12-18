@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Endless Halls Helper</title>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+	<script type="text/javascript" src="libs/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="js/utils.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+
+</head>
+<body>
+	<h1>Endless Halls Helper</h1>
+	<div id='solver_div'>
+		
+	</div>
+	<div id='instructions_div'>
+		<h2>Introduction</h2>
+		This program helps users to solve the endless halls maze. The idea is to feed it information about your own maze as you explore it, untill it has enough information to draw your unique map from all the possible combinations. It comes already with a solved maze so you can see how it works.
+		<br> 
+		Once the maze is solved you can click on any two rooms to calculate the shortest path between them.
+		<br>
+		<br>
+		<h2>Instructions</h2>
+		As you explore, using either an addon or drawing on map, you will discover paths between the different rooms. Then you need to add that information to the textbox on the left and press the "Process Data" button. The data is inserted using a simple text format:
+		<br>
+		<ul>
+			<li># represents a rune room</li>
+			<li>$ represents an orb room</li>
+			<li>R, G, B, Y, P represent the colors red, green, blue, yellow, purple</li>
+			<li>&T represents the teleport trap room</li>
+		</ul>
+		<br>
+		Example: You start in the yellow orb room. You move south, south, south, south, west, south, west, west and you arrive at the green rune room. You would input #YSSSSWSWW#G. Whenever you pass a special room you need to identify it.
+		<br>
+		<br>
+		This information alone is not enough for the program to calculate anything. The program would just show all the squares with a check mark. These represent all the possible rooms that may be be the initial room you gave it (in this case the yellow orb room). Since there is very little information yet, it may be any room.
+		<br>
+		<button onClick='showInitialTest()'>View Example</button>
+		<br>
+		<br>
+		As you add more information, the program will rule out rooms as the possible starting position.<br>
+		<button onClick='showSecondTest()'>View Example</button>
+		<br>
+		<br>
+		Once you have enough information, the program is able to figure out the position of the rooms you have already mapped. At this point you will know exactlly what rooms you already visited and what rooms are missing, and their exact location.<br>
+		<button onClick='showSolvedMazeTest()'>View Example</button>
+		<br>
+		<br>
+		Knowing all the missing rooms positions makes it easiear to find them and get the complete map.
+		<br>
+		<button onClick='showCompleteMazeTest()'>View Example</button>
+		<br>
+		<br>
+		You can click on any 2 rooms on the map to display the shortest path to travel between them.
+		<br>
+		<button onClick='showTestPath()'>View Example</button>
+		<br>
+		<br>
+		If you click the process data button and just see an empty white grid, it means some of the information is wrong.
+		<br>
+		<br>
+
+		<h2>Exploring tips</h2>
+		You can add any paths in any order to the program, as long as you're 100% sure they are valid. There is a trap room that teleports you to another random room on the map, making things harder when you start. The only way to be 100% sure you were not teleported during a path is going back the same way you came and make sure the initial room is there.
+		<br>
+		What I suggest to start is:
+		<ul>
+		<li>Run randomly untill you find a special room</li>
+		<li>Start mapping from that room and and run randomly untill you reach another special room</li>
+		<li>Go back to the first special room to make sure the path is valid</li>
+		<li>Run randomly in a different direction untill you reach another special room</li>
+		<li>Repeat the process to expand the map</li>
+		</ul>
+		<br>
+		If you run through the teleport room or the maps starts getting too messy, just copy only the pieces of information you know for sure are correct and start mapping another section starting from any other special room, untill you get a full map.
+		<br>
+		<br>
+		Good luck in getting your mount!!!
+	</div>
+</body>
+</html>
