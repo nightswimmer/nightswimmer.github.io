@@ -116,6 +116,8 @@ UserInterface.prototype.init = function()
 			//"<textarea id='text_path'>#YNNNE&T\n#YSWWSSEEEEN$GSSSS#RSSWWNNWS$PSSWWWNENN#BSSSSWWW$R\n$RN$YENW#P\n#PWWNEEENEESSW#Y</textarea>"+
 			//"<textarea id='text_path'>#YNNNE&T\n$RN$YENW#P\nWNNEEN#YSWWSSEEEEN$GSSSS#RSSWWNNWS$PSSWWWNENN#BSSSSWWW$R\n#PWWNEEENEESSW#Y</textarea>"+
 			"<textarea id='text_path'>#YSSSSWSWW#GWSWS$PESWSWW#G\n$GSEENNEEEEE$PNESSWSWW#G\n#GSEESSSS$RWSEEEEE$P\n$RNNWWNEEEEENESSSWWSE\n$GSEEEE#BS#P\n#PENEEEESENNNNESSWWWSSSS#Y\n#YSSWS$PWWSE$BWNWWWSESE#B\n#BWWWWSSSNNNN$GN#REW#RS$GE$YSS&T</textarea>"+
+			//"<textarea id='text_path'>S#RSEEEE#GENWW$YSSEN#GSWW$GNNN#BEESSSEEEEEEEN$PWNENWWNNEENNEENE&T\nNNNNWWWWNNNNWWWWNNNNWWWWS#PS&T\nSSSSEEEEEEEN$PSSSSSSE$RWWN&T\nEEEN$T\nE#GWWWWN#REE\n#RNW</textarea>"+
+
 
 			"<input type='button' id='button_process' value='Process Data'></input>"+
 			"<div id='header_div'>"+
@@ -732,7 +734,7 @@ function tracePath(position)
 		}
 
 		distance++;
-		//console.log("distance:"+distance);
+		console.log("-------- distance:"+distance+" --------");
 		//console.log(next_expand_rooms);
 
 		expand_rooms = next_expand_rooms;
@@ -755,7 +757,7 @@ function expandRoom(expand_room, distance, next_expand_rooms)
 	// Check if the next room is an overlap room 
 	var overlap = exits.north && exits.south && exits.east && exits.west;
 
-	// If it's NOT am overlap room, expand the possible paths to all the possible exits of the room
+	// If it's NOT an overlap room, expand the possible paths to all the possible exits of the room
 	if (!overlap)
 	{
 		console.log("Non-overlapping room");
@@ -776,17 +778,14 @@ function expandRoom(expand_room, distance, next_expand_rooms)
 			console.log("Expanding vertically");
 			expandRoomInDirection(expand_room, 'N', distance, next_expand_rooms);
 			expandRoomInDirection(expand_room, 'S', distance, next_expand_rooms);
-
 		}
-		else
+		if (_map_room_distance[expand_room.x-1][expand_room.y-1][1] == distance)
 		{
 			console.log("Expanding horizontally");
 			expandRoomInDirection(expand_room, 'E', distance, next_expand_rooms);
 			expandRoomInDirection(expand_room, 'W', distance, next_expand_rooms);				
 		}
-
 	}
-
 }
 
 
@@ -797,6 +796,9 @@ function expandRoomInDirection(expand_room, direction, distance, next_expand_roo
 
 	// Calculate the room coordinate when moving to the next room
 	var next_room = moveInDirection(expand_room, direction);
+
+	// Never process paths going through trap rooms
+	if (_map_room_ids[next_room.x-1][next_room.y-1] == '&T') return;
 
 	var exits = _map_room_exits[next_room.x-1][next_room.y-1];
 
@@ -819,15 +821,17 @@ function expandRoomInDirection(expand_room, direction, distance, next_expand_roo
 	{
 		next_expand_rooms.push(next_room);
 
-		// Tf it's not an overlap room or it's a vertical expansion, set the distance at pos [0]
+		// If it's not an overlap room or it's a vertical expansion, set the distance at pos [0]
 		if (!overlap || direction=='N' || direction=='S') 
 		{
 			_map_room_distance[next_room.x-1][next_room.y-1][0] = distance+1;
+			//drawRoomDistance(next_room, 'N');
 		}
-		// Tf it's an overlap room with an horizontal expansion, set the distance at pos [1]
+		// If it's an overlap room with an horizontal expansion, set the distance at pos [1]
 		else
 		{
 			_map_room_distance[next_room.x-1][next_room.y-1][1] = distance+1;
+			//drawRoomDistance(next_room, 'E');
 		}
 	}
 }
