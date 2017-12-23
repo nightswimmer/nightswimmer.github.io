@@ -50,6 +50,10 @@ var _map_room_exits =
 ];
 
 
+// List of all the ID's already discovered
+var _assigned_ids = [];
+
+
 // Array used to track the distance from one room to all the other rooms
 // Each rooms needs to have 2 distances because of the overlap rooms
 // Normal rooms will have the same value on both values, overlap rooms
@@ -65,10 +69,6 @@ var _map_room_distance =
     [[99, 99], [99, 99], [99, 99], [99, 99], [99, 99], [99, 99], [99, 99], [99, 99]],
     [[99, 99], [99, 99], [99, 99], [99, 99], [99, 99], [99, 99], [99, 99], [99, 99]]
 ];
-
-
-// List of all the ID's already discovered
-var _assigned_ids = [];
 
 
 // Load all the images used in the UI
@@ -115,8 +115,8 @@ UserInterface.prototype.init = function()
 			//"<textarea id='text_path'>#YSWWSSEEEEN$GSSSS#RSSWWNNWS$PSSWWWNENN#BSSSSWWW$R\n$RN$YENW#P\n#PWWNEEENEESSW#Y</textarea>"+
 			//"<textarea id='text_path'>#YNNNE&T\n#YSWWSSEEEEN$GSSSS#RSSWWNNWS$PSSWWWNENN#BSSSSWWW$R\n$RN$YENW#P\n#PWWNEEENEESSW#Y</textarea>"+
 			//"<textarea id='text_path'>#YNNNE&T\n$RN$YENW#P\nWNNEEN#YSWWSSEEEEN$GSSSS#RSSWWNNWS$PSSWWWNENN#BSSSSWWW$R\n#PWWNEEENEESSW#Y</textarea>"+
-			"<textarea id='text_path'>#YSSSSWSWW#GWSWS$PESWSWW#G\n$GSEENNEEEEE$PNESSWSWW#G\n#GSEESSSS$RWSEEEEE$P\n$RNNWWNEEEEENESSSWWSE\n$GSEEEE#BS#P\n#PENEEEESENNNNESSWWWSSSS#Y\n#YSSWS$PWWSE$BWNWWWSESE#B\n#BWWWWSSSNNNN$GN#REW#RS$GE$YSS&T</textarea>"+
-			//"<textarea id='text_path'>S#RSEEEE#GENWW$YSSEN#GSWW$GNNN#BEESSSEEEEEEEN$PWNENWWNNEENNEENE&T\nNNNNWWWWNNNNWWWWNNNNWWWWS#PS&T\nSSSSEEEEEEEN$PSSSSSSE$RWWN&T\nEEEN$T\nE#GWWWWN#REE\n#RNW</textarea>"+
+			//"<textarea id='text_path'>#YSSSSWSWW#GWSWS$PESWSWW#G\n$GSEENNEEEEE$PNESSWSWW#G\n#GSEESSSS$RWSEEEEE$P\n$RNNWWNEEEEENESSSWWSE\n$GSEEEE#BS#P\n#PENEEEESENNNNESSWWWSSSS#Y\n#YSSWS$PWWSE$BWNWWWSESE#B\n#BWWWWSSSNNNN$GN#REW#RS$GE$YSS&T</textarea>"+
+			"<textarea id='text_path'>S#RSEEEE#GENWW$YSSEN#GSWW$GNNN#BEESSSEEEEEEEN$PWNENWWNNEENNEENE&T\nNNNNWWWWNNNNWWWWNNNNWWWWS#PS&T\nSSSSEEEEEEEN$PSSSSSSE$RWWN&T\nEEEN$T\nE#GWWWWN#REE\n#RNW</textarea>"+
 
 
 			"<input type='button' id='button_process' value='Process Data'></input>"+
@@ -192,10 +192,11 @@ function showTestPath()
 
 
 var _correct_position = null;
+var _valid_solutions = 0;
 
 function findValidSquares()
 {
-	var valid_solutions = 0;
+	_valid_solutions = 0;
 
 	clearMap();
 
@@ -226,7 +227,7 @@ function findValidSquares()
 					canvasDrawImage(ctx, image_valid, 0);
 					console.log("VALID: "+canvas_id);
 					_correct_position = current_position;
-					valid_solutions++;
+					_valid_solutions++;
 				}
 				else
 				{
@@ -237,16 +238,19 @@ function findValidSquares()
 			}
 		}
 	}
-	console.log("Found "+valid_solutions+" possible positions");
-
+	console.log("Found "+_valid_solutions+" possible positions");
 
 	// We only found 1 solution, this is it!!!
-	if (valid_solutions == 1)
+	if (_valid_solutions == 1)
 	{
 		testPaths(_correct_position);
 		paintMap(_correct_position);
 	} 
-
+	// We found no solutions, there must be a problem with the input
+	else if (_valid_solutions == 0)
+	{
+		alert("No solutions could be found... There must be an error in the input data! :(");
+	}
 }
 
 
@@ -671,6 +675,13 @@ function tracePath(position)
 	{
 		console.log("Error: No correct position found!");
 		return;
+	}
+
+
+	if (_valid_solutions != 1)
+	{
+		console.log("Error: The number of valid solutions is not 1!");
+		return;		
 	}
 
 	// If both rooms were already set we reset them both and start again
