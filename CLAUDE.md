@@ -1,0 +1,6 @@
+- Read the file PROJECT_INSTRUCTIONS.md to get information about the project.
+- When something is unclear, feel free to request clarifications.
+- When I ask questions about a bug or feature, answer the question but don't change anything straight away. If the question implies correcting a bug or adding/removing/tweaking any features, always confirm first.
+- If something feels incomplete, feel free to suggest modifications or things to add.
+- Before big updates or big structure changes, remind me to push to GitHub.
+- When I say we're finishing, closing the chat or it's time for a commit, please update the file PROJECT_INSTRUCTIONS.md with the current state of the project. This file will be passed to future chats to serve as a reference point. Also update file README.md to be displayed in github page. In the end, tell me an overview of the changes, and suggest a commit name and description for git. I will do the commit in the end.

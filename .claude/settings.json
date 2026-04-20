@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Bash(echo *)",
+      "Bash(git *)",
+      "Bash(npm *)",
+      "Bash(node *)",
+      "Bash(npx *)",
+      "Bash(grep *)",
+      "Bash(curl *)",
+      "Bash(node_modules/.bin/* *)",
+      "Bash(find *)",
+      "Bash(xargs *)",
+      "Bash(cat *)",
+      "Bash(ls *)",
+      "Bash(wc *)",
+      "Bash(tail *)"      
+    ],
+    "deny": [
+      "Bash(rm -rf *)"
+    ]
+  }
+}
