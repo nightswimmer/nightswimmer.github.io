@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="Screenshot coming soon">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a3144"/>
+      <stop offset="1" stop-color="#151823"/>
+    </linearGradient>
+    <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M16 0H0v16" fill="none" stroke="#303749" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="320" height="200" fill="url(#g)"/>
+  <rect width="320" height="200" fill="url(#grid)"/>
+  <g fill="none" stroke="#8893b0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="128" y="78" width="64" height="44" rx="4"/>
+    <path d="M136 112l14-14 12 12 10-10 16 16"/>
+    <circle cx="170" cy="90" r="3.5"/>
+  </g>
+  <text x="160" y="148" text-anchor="middle" font-family="-apple-system, Segoe UI, Roboto, sans-serif" font-size="12" fill="#8893b0" letter-spacing="1">SCREENSHOT COMING SOON</text>
+</svg>

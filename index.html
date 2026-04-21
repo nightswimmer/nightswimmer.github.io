@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A collection of browser-based tools and webapps by nightswimmer — electronics calculators, image utilities, home automation helpers, and more.">
+<meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f7f8" media="(prefers-color-scheme: light)">
+<title>nightswimmer — webapps &amp; tools</title>
+<link rel="stylesheet" href="style.css">
+<script>
+  // Apply stored theme before paint to avoid flash
+  (function () {
+    var saved = localStorage.getItem('theme');
+    if (saved === 'light' || saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  })();
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="nightswimmer home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">nightswimmer</span>
+    </a>
+    <nav class="site-nav">
+      <a href="#apps">Apps</a>
+      <a href="https://github.com/nightswimmer" target="_blank" rel="noopener">GitHub</a>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle color theme">
+        <svg class="icon-sun"  viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4V2m0 20v-2M4 12H2m20 0h-2M5.6 5.6 4.2 4.2m15.6 15.6-1.4-1.4M5.6 18.4l-1.4 1.4M19.8 4.2l-1.4 1.4M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">nightswimmer</p>
+      <h1>Small webapps, built to solve real problems.</h1>
+      <p class="lede">A growing collection of browser-based tools — electronics calculators, image utilities, home-automation helpers, and a few curiosities. All open source, all running straight from your browser.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#apps">Browse apps</a>
+        <a class="btn btn-ghost" href="https://github.com/nightswimmer" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="apps" class="apps">
+    <div class="container">
+      <header class="section-head">
+        <h2>Apps</h2>
+        <p>Click a screenshot to preview it full-size. Use the buttons to try the app or view its source on GitHub.</p>
+      </header>
+
+      <ul class="card-grid" role="list">
+
+        <li class="card">
+          <button class="card-shot" type="button" aria-label="View Endless Halls screenshot">
+            <img src="images/endlesshalls.png" alt="" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('is-placeholder');">
+          </button>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="tag">Gaming</span>
+            </div>
+            <h3 class="card-title">Endless Halls</h3>
+            <p class="card-desc">A browser-based solver for the Endless Halls maze event in World of Warcraft. Enter your exploration paths and it deduces the unique 8×8 map layout.</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="https://nightswimmer.github.io/EndlessHalls/" target="_blank" rel="noopener">Try it now!</a>
+              <a class="btn btn-ghost" href="https://github.com/nightswimmer/EndlessHalls" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <button class="card-shot" type="button" aria-label="View Home Assistant Position Editor screenshot">
+            <img src="images/home-assistant-position-editor.png" alt="" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('is-placeholder');">
+          </button>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="tag">Home automation</span>
+            </div>
+            <h3 class="card-title">Home Assistant Position Editor</h3>
+            <p class="card-desc">A visual editor for Home Assistant picture-elements cards. Drop in a floor plan, drag entity icons to reposition them, and export updated YAML with comments preserved.</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="https://nightswimmer.github.io/Home-Assistant-Position-Editor/" target="_blank" rel="noopener">Try it now!</a>
+              <a class="btn btn-ghost" href="https://github.com/nightswimmer/Home-Assistant-Position-Editor" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <button class="card-shot" type="button" aria-label="View DC-DC Feedback Divider screenshot">
+            <img src="images/dc-dc-feedback-divider.png" alt="" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('is-placeholder');">
+          </button>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="tag">Electronics</span>
+            </div>
+            <h3 class="card-title">DC-DC Feedback Divider</h3>
+            <p class="card-desc">Design resistor feedback dividers for adjustable DC-DC converters. Supports multiple output voltages and standard E-series component pools.</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="https://nightswimmer.github.io/DC-DC-Feedback-Divider/" target="_blank" rel="noopener">Try it now!</a>
+              <a class="btn btn-ghost" href="https://github.com/nightswimmer/DC-DC-Feedback-Divider" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <button class="card-shot" type="button" aria-label="View TPS54360B Calculator screenshot">
+            <img src="images/tps54360b-calculator.png" alt="" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('is-placeholder');">
+          </button>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="tag">Electronics</span>
+            </div>
+            <h3 class="card-title">TPS54360B Calculator</h3>
+            <p class="card-desc">A single-file tool that designs the complete external component set for the Texas Instruments TPS54360B buck converter.</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="https://nightswimmer.github.io/TPS54360B-Calculator/" target="_blank" rel="noopener">Try it now!</a>
+              <a class="btn btn-ghost" href="https://github.com/nightswimmer/TPS54360B-Calculator" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <button class="card-shot" type="button" aria-label="View SVG Optimizer screenshot">
+            <img src="images/svg-optimizer.png" alt="" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('is-placeholder');">
+          </button>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="tag">Dev tool</span>
+            </div>
+            <h3 class="card-title">SVG Optimizer</h3>
+            <p class="card-desc">Inspect, refactor, and slim down SVG files — especially the bloated output Inkscape tends to produce. Everything runs locally in the browser.</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="https://nightswimmer.github.io/SVG-Optimizer/" target="_blank" rel="noopener">Try it now!</a>
+              <a class="btn btn-ghost" href="https://github.com/nightswimmer/SVG-Optimizer" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <button class="card-shot" type="button" aria-label="View GroundScale screenshot">
+            <img src="images/groundscale.png" alt="" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('is-placeholder');">
+          </button>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="tag">Imaging</span>
+            </div>
+            <h3 class="card-title">GroundScale</h3>
+            <p class="card-desc">Measure real-world distances and areas directly on 2D images — drop in a photo, set a reference, and read off the rest.</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="https://nightswimmer.github.io/GroundScale/" target="_blank" rel="noopener">Try it now!</a>
+              <a class="btn btn-ghost" href="https://github.com/nightswimmer/GroundScale" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <button class="card-shot" type="button" aria-label="View Pixlite screenshot">
+            <img src="images/pixlite.png" alt="" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('is-placeholder');">
+          </button>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="tag">Graphics</span>
+            </div>
+            <h3 class="card-title">Pixlite</h3>
+            <p class="card-desc">A standalone, browser-based image editor packaged as a single HTML file — crop, resize, rotate, adjust and export without installing anything.</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="https://nightswimmer.github.io/Pixlite/" target="_blank" rel="noopener">Try it now!</a>
+              <a class="btn btn-ghost" href="https://github.com/nightswimmer/Pixlite" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="card">
+          <button class="card-shot" type="button" aria-label="View Compoundator screenshot">
+            <img src="images/compoundator.png" alt="" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('is-placeholder');">
+          </button>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="tag">Finance</span>
+            </div>
+            <h3 class="card-title">Compoundator</h3>
+            <p class="card-desc">A simple, mobile-first compound interest calculator. Runs in any browser, installs as a PWA, and also ships as a native Android APK.</p>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="https://nightswimmer.github.io/Compoundator/web/" target="_blank" rel="noopener">Try it now!</a>
+              <a class="btn btn-ghost" href="https://github.com/nightswimmer/Compoundator" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<dialog id="lightbox" class="lightbox" aria-label="Screenshot preview">
+  <button class="lightbox-close" type="button" aria-label="Close preview">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <img id="lightbox-img" alt="">
+</dialog>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> nightswimmer</p>
+    <p><a href="https://github.com/nightswimmer" target="_blank" rel="noopener">github.com/nightswimmer</a></p>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
